@@ -78,5 +78,60 @@ Now combine them so it is easier to view them
 probes = cbind(personOneProbe, personTwoProbe, personThreeProbe, personFourProbe, personFiveProbe); probes
 
 ```
+Now I need to select 7 from the baselines for person's 2 through 5
+Person 2 Baseline
+```{r}
+personTwoBase = c(1:8)
+ProbeFunction = function(x){
+  set.seed(12345)
+  x = as.data.frame(sample(x, 7))
+  colnames(x) = c("x")
+  x = x[order(x),]
+  x
+}
 
+
+personTwoProbeBase = ProbeFunction(personTwoBase); personTwoProbeBase
+```
+Person 3 Baseline
+```{r}
+personThreeBase = c(1:10)
+ProbeFunction = function(x){
+  set.seed(12345)
+  x = as.data.frame(sample(x, 7))
+  colnames(x) = c("x")
+  x = x[order(x),]
+  x
+}
+personThreeProbeBase = ProbeFunction(personThreeBase); personThreeProbeBase
+```
+Person 4 Baseline
+```{r}
+personFourBase = c(1:12)
+ProbeFunction = function(x){
+  set.seed(12345)
+  x = as.data.frame(sample(x, 7))
+  colnames(x) = c("x")
+  x = x[order(x),]
+  x
+}
+personFourProbeBase = ProbeFunction(personFourBase); personFourProbeBase
+```
+Person 5 Baseline
+```{r}
+personFiveBase = c(1:14)
+ProbeFunction = function(x){
+  set.seed(12345)
+  x = as.data.frame(sample(x, 7))
+  colnames(x) = c("x")
+  x = x[order(x),]
+  x
+}
+personFiveProbeBase = ProbeFunction(personFiveBase); personFiveProbeBase
+```
+Now combine them all make the changes
+```{r}
+personBaselineProbes = cbind(personTwoProbeBase, personThreeProbeBase, personFourProbeBase, personFiveProbeBase); personBaselineProbes
+
+```
 
