@@ -78,5 +78,37 @@ Now combine them so it is easier to view them
 probes = cbind(personOneProbe, personTwoProbe, personThreeProbe, personFourProbe, personFiveProbe); probes
 
 ```
+Now I need to select 7 from the baselines for person's 4 and 5, because we need to save the last three baseline to compare to the first three
 
+Person 4 Baseline.  I am subtracted 3, because I want to ensure the last three baselines are kept.  I am also one value lower (i.e. person four starts at 13 not 12), because 13 is when the person starts therefore is not an baseline value.
+
+Double check what you have above
+```{r}
+personFourBase = c(1:(12-3))
+ProbeFunction = function(x){
+  set.seed(12345)
+  x = as.data.frame(sample(x, 7))
+  colnames(x) = c("x")
+  x = x[order(x),]
+  x
+}
+personFourProbeBase = ProbeFunction(personFourBase); personFourProbeBase
+```
+Person 5 Baseline
+```{r}
+personFiveBase = c(1:(14-3))
+ProbeFunction = function(x){
+  set.seed(12345)
+  x = as.data.frame(sample(x, 7))
+  colnames(x) = c("x")
+  x = x[order(x),]
+  x
+}
+personFiveProbeBase = ProbeFunction(personFiveBase); personFiveProbeBase
+```
+Now combine them all make the changes
+```{r}
+personBaselineProbes = cbind(personFourProbeBase, personFiveProbeBase); personBaselineProbes
+
+```
 
